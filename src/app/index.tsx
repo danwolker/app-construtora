@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { StatusBar } from "react-native";
-import { View, Text } from "react-native";
+import { StatusBar, View } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import * as SplashScreen from "expo-splash-screen";
 import {
@@ -14,6 +13,7 @@ import {
 import { DMSans_400Regular } from "@expo-google-fonts/dm-sans";
 import { DMSerifDisplay_400Regular } from "@expo-google-fonts/dm-serif-display";
 import THEME from "../styles/theme";
+import { Login } from "../screens/Login/Login";
 
 // Impede que a splash screen desapareça automaticamente
 SplashScreen.preventAutoHideAsync();
@@ -39,26 +39,14 @@ const App: React.FC = () => {
   }, [fontsLoaded]);
 
   if (!fontsLoaded) {
-    return null; // Retorna null enquanto as fontes carregam
+    return null;
   }
 
   return (
     <ThemeProvider theme={THEME}>
-      <StatusBar
-        style="light"
-        backgroundColor={THEME.COLORS.BACKGROUNDTRANSPARENT}
-        translucent />
-
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-
-          backgroundColor: THEME.COLORS.SUCCESS_LIGHT5,
-        }}
-      >
-        <Text>Hello Worldss</Text>
+      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+      <View style={{ flex: 1 }}>
+        <Login />
       </View>
     </ThemeProvider>
   );
