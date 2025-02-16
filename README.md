@@ -1,50 +1,83 @@
-# Welcome to your Expo app 👋
+<h1> AppConstrutora - Configuração e Instalação</h1>
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+<h2>📌 Como rodar o projeto localmente</h2>
 
-## Get started
+<h3>1️⃣ Pré-requisitos</h3>
 
-1. Install dependencies
+<ul>
+    <li>Instalar <strong>Node.js</strong> (última versão LTS): <a href="https://nodejs.org/" target="_blank">Node.js Download</a></li>
+    <li>Verificar a versão do Node.js instalada:
+        <pre><code>node -v</code></pre>
+    </li>
+    <li>Se a versão estiver desatualizada, atualizar via nvm:
+        <pre><code>nvm install --lts
+nvm use --lts</code></pre>
+    </li>
+    <li>Verificar e atualizar <strong>npm</strong>:
+        <pre><code>npm -v
+npm install -g npm</code></pre>
+    </li>
+    <li>Instalar e atualizar <strong>Yarn 4 (Berry)</strong>:
+        <pre><code>corepack enable
+yarn set version berry</code></pre>
+    </li>
+    <li>Verificar a versão do Yarn:
+        <pre><code>yarn --version</code></pre>
+    </li>
+    <li>Configurar compatibilidade do Yarn Berry com Expo:
+        <pre><code>yarn config set nodeLinker node-modules</code></pre>
+    </li>
+    <li>Instalar <strong>Expo CLI</strong>:
+        <pre><code>yarn dlx expo-cli</code></pre>
+    </li>
+</ul>
 
-   ```bash
-   npm install
-   ```
+<hr>
 
-2. Start the app
+<h3>2️⃣ Clonar o repositório</h3>
 
-   ```bash
-    npx expo start
-   ```
+<p>Baixe o código-fonte do projeto e acesse o diretório:</p>
 
-In the output, you'll find options to open the app in a
+<pre><code>git clone https://github.com/danwolker/app-construtora.git
+cd app-construtora</code></pre>
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+<h3>3️⃣ Instalar dependências</h3>
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+<p>Execute o seguinte comando para instalar todas as dependências do projeto:</p>
 
-## Get a fresh project
+<pre><code>yarn install</code></pre>
 
-When you're ready, run:
+<h3>4️⃣ Rodar o projeto</h3>
 
-```bash
-npm run reset-project
-```
+<p>Para iniciar o servidor do Expo, execute:</p>
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+<pre><code>yarn expo start</code></pre>
 
-## Learn more
+<h3>5️⃣ Rodar no emulador ou dispositivo</h3>
 
-To learn more about developing your project with Expo, look at the following resources:
+<ul>
+    <li>Para rodar no <strong>Android</strong>:
+        <pre><code>yarn expo run:android</code></pre>
+    </li>
+    <li>Para rodar no <strong>navegador</strong>:
+        <pre><code>yarn expo start --web</code></pre>
+    </li>
+</ul>
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+<hr>
 
-## Join the community
+<h3>📌 Dicas úteis</h3>
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+<ul>
+    <li>Se precisar atualizar todas as dependências do projeto:
+        <pre><code>yarn up "*" --recursive</code></pre>
+    </li>
+    <li>Se precisar verificar problemas de compatibilidade no Expo:
+        <pre><code>npx expo-doctor</code></pre>
+    </li>
+    <li>Se houver problemas após atualizar pacotes, tente limpar o cache e reinstalar:
+        <pre><code>yarn cache clean
+rm -rf node_modules .yarn
+yarn install</code></pre>
+    </li>
+</ul>
