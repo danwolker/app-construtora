@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { StatusBar, View } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { SafeAreaProvider } from "react-native-safe-area-context"; // Adicionado
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import * as SplashScreen from "expo-splash-screen";
 import {
   useFonts,
@@ -17,7 +17,6 @@ import { DMSerifDisplay_400Regular } from "@expo-google-fonts/dm-serif-display";
 import THEME from "../styles/theme";
 import { Login } from "../screens/Login/Login";
 
-// Impede que a splash screen desapareça automaticamente
 SplashScreen.preventAutoHideAsync();
 
 const App: React.FC = () => {
@@ -34,7 +33,7 @@ const App: React.FC = () => {
   useEffect(() => {
     async function hideSplashScreen() {
       if (fontsLoaded) {
-        await SplashScreen.hideAsync(); // Esconde a splash screen quando as fontes carregarem
+        await SplashScreen.hideAsync();
       }
     }
     hideSplashScreen();
