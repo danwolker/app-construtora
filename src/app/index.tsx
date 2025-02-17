@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { StatusBar, View } from "react-native";
 import { ThemeProvider } from "styled-components/native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SafeAreaProvider } from "react-native-safe-area-context"; // Adicionado
 import * as SplashScreen from "expo-splash-screen";
 import {
   useFonts,
@@ -43,12 +45,16 @@ const App: React.FC = () => {
   }
 
   return (
-    <ThemeProvider theme={THEME}>
-      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-      <View style={{ flex: 1 }}>
-        <Login />
-      </View>
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <ThemeProvider theme={THEME}>
+          <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
+          <View style={{ flex: 1 }}>
+            <Login />
+          </View>
+        </ThemeProvider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 };
 

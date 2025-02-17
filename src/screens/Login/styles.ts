@@ -1,47 +1,42 @@
 import styled from "styled-components/native";
+import { RFValue } from "react-native-responsive-fontsize";
 import { DefaultTheme } from "styled-components";
 
-export const Container = styled.View<{ theme: DefaultTheme }>`
-    flex: 1;
-    background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.BACKGROUND};
-    align-items: center;
-    justify-content: center;
+export const Container = styled.View`
+    padding: ${RFValue(5)}px;
 `;
 
 export const ContentHeader = styled.View`
-    flex: 1;
     align-items: center;
     justify-content: center;
+    padding: ${RFValue(50)}px;
+    margin-top: ${RFValue(20)}px;
+    background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.BACKGROUNDLIGHT};
 `;
 
 export const ContentBody = styled.View`
-    flex: 1;
-    align-items: center;
-    justify-content: center;
+
 `;
 
 export const ContentFooter = styled.View`
-    flex: 1;
-    align-items: center;
-    justify-content: center;
+ 
 `;
 
-export const Title = styled.Text<{ theme: DefaultTheme }>`
-    font-size: 24px;
+export const Title = styled.Text`
+   text-align: center;
+    font-size: ${RFValue(25)}px;
+    font-family: ${({ theme }: { theme: DefaultTheme }) => theme.FONTS.POPPINSMEDIUM};
+`;
+
+export const Description = styled.Text`
+    text-align: center;
+    font-size: ${RFValue(15)}px;
     color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.TEXT};
-    font-family: ${({ theme }: { theme: DefaultTheme }) => theme.FONTS.POPPINSBOLD};
+    margin-top: ${RFValue(50)}px;
+    font-family: ${({ theme }: { theme: DefaultTheme }) => theme.FONTS.POPPINSLIGHT};
 `;
 
-export const Description = styled.Text<{ theme: DefaultTheme }>`
-font-size: 16px;
-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.TEXT};
-font-family: ${({ theme }: { theme: DefaultTheme }) => theme.FONTS.POPPINSREGULAR};
-`;
-
-export const ViewButton = styled.View<{ theme: DefaultTheme }>`
-width: 100%;
-height: 50px;
-background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.PRIMARY};
-align-items: center;
-justify-content: center;
+export const ViewButton = styled.View`
+    flex-direction: row;
+    margin-top: ${RFValue(10)}px;
 `;
