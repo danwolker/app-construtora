@@ -10,7 +10,7 @@
         <pre><code>node -v</code></pre>
     </li>
     <li>Se a versão estiver desatualizada, atualizar via nvm:
-        <pre><code>nvm install --lts
+        <pre><code>nvm install node
 nvm use --lts</code></pre>
     </li>
     <li>Verificar e atualizar <strong>npm</strong>:
