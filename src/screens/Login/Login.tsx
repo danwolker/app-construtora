@@ -24,8 +24,8 @@ const Login: React.FC = () => {
         <ContentBody>
           {/* 📌 Agora os inputs estão dentro de um <Form> */}
           <Form ref={formRef} onSubmit={(data) => console.log(data)}>
-            <Input name="email" placeholder="Digite seu e-mail" keyboardType="email-address" />
-            <Input name="password" placeholder="Digite sua senha" secureTextEntry />
+          <Input name="email" placeholder="Digite seu e-mail" keyboardType="email-address" iconName="mail" />
+          <Input name="password" placeholder="Digite sua senha" secureTextEntry iconName="lock-closed" />
           </Form>
         </ContentBody>
 

@@ -15,6 +15,13 @@ export const ContentHeader = styled.View`
 `;
 
 export const ContentBody = styled.View`
+    margin-top: ${RFValue(-30)}px;
+    background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.BACKGROUNDLIGHT};
+    border-top-left-radius: ${RFValue(20)}px;
+    border-top-right-radius: ${RFValue(20)}px;
+    border-bottom-left-radius: ${RFValue(20)}px;
+    border-bottom-right-radius: ${RFValue(20)}px;
+    margin-bottom: ${RFValue(20)}px;
 
 `;
 

@@ -1,108 +1,123 @@
 import React, {
+  useRef,
+  useState,
+  useEffect,
   forwardRef,
   useCallback,
-  useState,
   useImperativeHandle,
-  useRef,
-  useEffect,
 } from "react";
 import { useField } from "@unform/core";
+import { useTheme } from "styled-components";
 import { Ionicons } from "@expo/vector-icons";
 import { TextInputProps } from "react-native";
-import { Container, IContainer, InputText } from "./styles";
 
 interface InputRef {
   focus(): void;
 }
 
+interface InputValueReference {
+  value: string;
+}
+
 interface InputProps extends TextInputProps {
   name: string;
   value?: string;
-  iconName?: React.ComponentProps<typeof Ionicons>["name"];
-  containerStyle?: Record<string, string | number>;
+  iconName: keyof typeof Ionicons.glyphMap;
+  containerStyle?: { [key: string]: string | number };
 }
 
+import { Container, IConContainer, InputText } from "./styles";
+
 const Input: React.ForwardRefRenderFunction<InputRef, InputProps> = (
-  { iconName,
-    name,
-    value = "",
-    containerStyle,
-    ...rest },
+  { iconName, name, value, containerStyle, ...rest },
   ref
 ) => {
-  if (!name) {
-    console.error("O componente <Input> precisa de uma propriedade 'name'.");
-    return null;
-  }
+  const theme = useTheme();
 
-  const inputElementRef = useRef<any>(null);
-
-  // 🔹 Garantindo que useField não retorne null ou undefined
-  let field;
-  try {
-    field = useField(name);
-  } catch (err) {
-    console.error(`Erro ao acessar useField('${name}'): `, err);
-    return null;
-  }
-
-  if (!field) {
-    console.error(`Erro: useField('${name}') retornou null ou undefined.`);
-    return null;
-  }
-
-  const { fieldName, registerField, defaultValue = "", error } = field;
-  const inputValueRef = useRef<{ value: string }>({ value: defaultValue });
-
+  const [hasError, setHasError] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-  const [isFilled, setIsFilled] = useState(!!defaultValue);
+  const [isFilled, setIsFilled] = useState(false);
 
-  const handleFocus = useCallback(() => setIsFocused(true), []);
+  const {
+      registerField,
+      fieldName,
+      defaultValue = "",
+      error,
+  } = useField(name);
+  const inputElementRef = useRef<any>(null);
+  const inputValueRef = useRef<InputValueReference>({ value: defaultValue });
+
+  useEffect(() => {
+      setHasError(!!error);
+  }, [error]);
+
+  const handleFocus = useCallback(() => {
+      setIsFocused(true);
+      setHasError(false);
+  }, []);
+
   const handleBlur = useCallback(() => {
-    setIsFocused(false);
-    setIsFilled(!!inputValueRef.current.value);
+      setIsFocused(false);
+      setIsFilled(!!inputValueRef.current.value);
   }, []);
 
   useImperativeHandle(ref, () => ({
-    focus() {
-      inputElementRef.current?.focus();
-    },
+      focus() {
+          inputElementRef.current.focus();
+      },
   }));
 
   useEffect(() => {
-    registerField({
-      name: fieldName,
-      ref: inputValueRef.current,
-      path: "value",
-      setValue(ref: any, value: string) {
-        inputValueRef.current.value = value;
-        inputElementRef.current?.setNativeProps({ text: value });
-      },
-      clearValue() {
-        inputValueRef.current.value = "";
-        inputElementRef.current?.clear();
-      },
-    });
-  }, [fieldName, registerField]);
+      registerField<string>({
+          name: fieldName,
+          ref: inputElementRef.current,
+          path: "value",
+          setValue(_, value) {
+              inputValueRef.current.value = value;
+              inputElementRef.current.setNativeProps({ text: value });
+          },
+          clearValue() {
+              inputValueRef.current.value = "";
+              inputElementRef.current.clear();
+          },
+      });
+  }, [registerField, fieldName]);
 
   return (
-    <Container style={containerStyle}>
-      {iconName && <Ionicons name={iconName} size={20} color="#666360" />}
-      <IContainer isFocused={isFocused} isFilled={isFilled} hasError={!!error}>
-        <InputText
-          ref={inputElementRef}
-          keyboardAppearance="dark"
-          defaultValue={defaultValue}
-          onChangeText={(value: string) => (inputValueRef.current.value = value)}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          isFocused={isFocused}
-          isFilled={isFilled}
-          hasError={!!error}
-          {...rest}
-        />
-      </IContainer>
-    </Container>
+      <Container style={containerStyle}>
+          <IConContainer
+              isFilled={isFilled}
+              hasError={hasError}
+              isFocused={isFocused}
+          >
+              {iconName && (
+                  <Ionicons
+                      name={iconName}
+                      size={25}
+                      color={
+                          isFocused || hasError || isFilled
+                              ? theme.COLORS.BLUE1
+                              : theme.COLORS.GRAY1
+                      }
+                  />
+              )}
+          </IConContainer>
+
+          <InputText
+              ref={inputElementRef}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              isFilled={isFilled}
+              hasError={hasError}
+              isFocused={isFocused}
+              defaultValue={defaultValue}
+              placeholderTextColor={theme.COLORS.GRAY1}
+              onChangeText={(value: string) => {
+                inputValueRef.current.value = value;
+              }}
+              {...rest}
+          />
+      </Container>
   );
 };
 
