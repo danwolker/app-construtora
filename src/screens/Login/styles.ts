@@ -3,6 +3,7 @@ import { RFValue } from "react-native-responsive-fontsize";
 import { DefaultTheme } from "styled-components";
 
 export const Container = styled.View`
+ background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.GRAY6};
     padding: ${RFValue(5)}px;
 `;
 
@@ -11,12 +12,12 @@ export const ContentHeader = styled.View`
     justify-content: center;
     padding: ${RFValue(50)}px;
     margin-top: ${RFValue(20)}px;
-    background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.BACKGROUNDLIGHT};
+    bbackground-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.GRAY6};
 `;
 
 export const ContentBody = styled.View`
     margin-top: ${RFValue(-30)}px;
-    background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.BACKGROUNDLIGHT};
+    background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.GRAY6};
     border-radius: ${RFValue(20)}px;
     margin-bottom: ${RFValue(20)}px;
 `;
@@ -60,7 +61,7 @@ export const ViewLinkContainer = styled.View`
 
 export const LinkText = styled.Text`
     font-size: ${RFValue(14)}px;
-    color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.BLUE1};
+    color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.BLUE2};
     font-family: ${({ theme }: { theme: DefaultTheme }) => theme.FONTS.POPPINSMEDIUM};
     text-decoration: underline;
 `;

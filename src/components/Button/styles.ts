@@ -18,7 +18,7 @@ export const Container = styled(Pressable)`
     height: 50px;
     align-items: center;
     justify-content: center;
-    background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.PRIMARY};
+    background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.BLUE2};
     border-radius: ${RFValue(8)}px;
     margin-top: ${RFValue(10)}px;
 
