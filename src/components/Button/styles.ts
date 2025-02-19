@@ -13,8 +13,8 @@ export const title = styled(RNText)`
 `;  
 
 export const Container = styled(Pressable)`
-    margin-left: 100px;
-    width: 50%;
+    margin-left: 40px;
+    width: 80%;
     height: 50px;
     align-items: center;
     justify-content: center;

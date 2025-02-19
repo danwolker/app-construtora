@@ -15,23 +15,14 @@ export const ContentHeader = styled.View`
 `;
 
 export const ContentBody = styled.View`
-   
     margin-top: ${RFValue(-30)}px;
     background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.BACKGROUNDLIGHT};
-    border-top-left-radius: ${RFValue(20)}px;
-    border-top-right-radius: ${RFValue(20)}px;
-    border-bottom-left-radius: ${RFValue(20)}px;
-    border-bottom-right-radius: ${RFValue(20)}px;
+    border-radius: ${RFValue(20)}px;
     margin-bottom: ${RFValue(20)}px;
-
-`;
-
-export const ContentFooter = styled.View`
- 
 `;
 
 export const Title = styled.Text`
-   text-align: center;
+    text-align: center;
     font-size: ${RFValue(28)}px;
     font-family: ${({ theme }: { theme: DefaultTheme }) => theme.FONTS.POPPINSMEDIUM};
 `;
@@ -43,9 +34,10 @@ export const Description = styled.Text`
     color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.TEXT};
     font-family: ${({ theme }: { theme: DefaultTheme }) => theme.FONTS.POPPINSLIGHT};
 `;
+
 export const SubDescription = styled.Text`
     text-align: center;
-    margin-bottom: ${RFValue(10)}px;
+    margin-top: ${RFValue(50)}px;
     font-size: ${RFValue(15)}px;
     color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.TEXT};
     font-family: ${({ theme }: { theme: DefaultTheme }) => theme.FONTS.POPPINSLIGHT};
@@ -54,4 +46,21 @@ export const SubDescription = styled.Text`
 export const ViewButton = styled.View`
     margin-left: ${RFValue(40)}px;
     flex-direction: row;
+`;
+
+export const ContentFooter = styled.View``;
+
+/* 📌 Estilização dos Hyperlinks */
+export const ViewLinkContainer = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: ${RFValue(5)}px;
+    padding: 0 ${RFValue(35)}px;
+`;
+
+export const LinkText = styled.Text`
+    font-size: ${RFValue(14)}px;
+    color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.BLUE1};
+    font-family: ${({ theme }: { theme: DefaultTheme }) => theme.FONTS.POPPINSMEDIUM};
+    text-decoration: underline;
 `;

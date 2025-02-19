@@ -10,8 +10,8 @@ export const Button = styled(RectButton)<{ theme: DefaultTheme }>`
   justify-content: center;
   width: ${RFValue(130)}px;
   height: ${RFValue(60)}px;
-  margin-left: ${RFValue(5)}px;
-  border-radius: ${RFValue(5)}px;
+  margin-left: ${RFValue(10)}px;
+  border-radius: ${RFValue(10)}px;
   box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.2);
   background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.BLUE};
 `;
