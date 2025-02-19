@@ -1,67 +1,50 @@
-import styled, { css, DefaultTheme } from 'styled-components/native';
-import { TextInput, ViewProps } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize';
+import styled, { css } from "styled-components/native";
+import { TextInput } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
+import { DefaultTheme } from 'styled-components/native';
 
-interface IContainerProps extends ViewProps {
-    hasError: boolean;
-    isFocused: boolean;
-    isFilled?: boolean;
-}
-
-interface ITextContainerProps extends ViewProps {
-    hasError: boolean;
-    isFocused: boolean;
-    isFilled?: boolean;
+interface InputContainerProps {
+  isFocused: boolean;
+  hasError: boolean;
 }
 
 export const Container = styled.View`
-    width: 90%;
-    flex-direction: row;
-    height: ${RFValue(50)}px;
-    margin-bottom: ${RFValue(10)}px;
+  margin-left: ${RFValue(35)}px;
+  width: 80%;
+  margin-bottom: ${RFValue(10)}px;
 `;
 
-export const IConContainer = styled.View<IContainerProps>`
-    width: ${RFValue(50)}px;
-    height: ${RFValue(50)}px;
-    margin-left: ${RFValue(40)}px;
-    justify-content: center;
-    align-items: center;
+export const Label = styled.Text`
+  font-size: ${RFValue(14)}px;
+  font-family:${({ theme }: DefaultTheme) => theme.FONTS.POPPINSMEDIUM};
+  color: ${({ theme }: DefaultTheme) => theme.COLORS.BLACK};
+  margin-bottom: ${RFValue(5)}px;
+`;
+export const InputWrapper = styled.View<InputContainerProps>`
+  flex-direction: row;
+  align-items: center;
+  border-radius: ${RFValue(5)}px;
+  background-color: ${({ theme }: DefaultTheme) => theme.COLORS.GRAY5};
+  padding: 0 ${RFValue(10)}px;
 
-    ${({ isFocused, isFilled, theme }: { isFocused: boolean; isFilled?: boolean; theme: DefaultTheme }) => 
-        (isFocused || isFilled) && css`
-            border-bottom-width: ${RFValue(2)}px;
-            border-bottom-color: ${theme.COLORS.BLUE1};
-        `};
-
-    ${({ hasError, theme }: { hasError: boolean; theme: DefaultTheme }) => hasError && css`
-        border-bottom-color: ${theme.COLORS.RED};
+  ${({ isFocused, theme }) =>
+    isFocused &&
+    css`
+      border-bottom-width: ${RFValue(2)}px;
+      border-bottom-color: ${theme.COLORS.BLUE1};
     `};
 
-    margin-right: ${RFValue(3)}px;
-    border-top-left-radius: ${RFValue(5)}px;
-    border-bottom-left-radius: ${RFValue(5)}px;
-    background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.GRAY5};
+  ${({ hasError, theme }) =>
+    hasError &&
+    css`
+      border-bottom-color: ${theme.COLORS.RED};
+    `};
 `;
 
-export const InputText = styled(TextInput)<ITextContainerProps>`
-    flex: 1;
-    font-size: ${RFValue(12)}px;
-    border-top-right-radius: ${RFValue(5)}px;
-    border-bottom-right-radius: ${RFValue(5)}px;
-    color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.GRAY1};
-    font-family: ${({ theme }: { theme: DefaultTheme }) => theme.FONTS.POPPINSLIGHT};
-    background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.GRAY5};
-
-    ${({ isFocused, isFilled, theme }: { isFocused: boolean; isFilled?: boolean; theme: DefaultTheme }) => 
-        (isFocused || isFilled) && css`
-            border-bottom-width: ${RFValue(2)}px;
-            border-bottom-color: ${theme.COLORS.BLUE1};
-        `};
-
-    ${({ hasError, theme }: { hasError: boolean; theme: DefaultTheme }) => hasError && css`
-        border-bottom-color: ${theme.COLORS.RED};
-    `};
-
-    padding: 0 ${RFValue(10)}px;
+export const InputText = styled(TextInput)`
+  flex: 1;
+  font-size: ${RFValue(14)}px;
+  color: ${({ theme }: DefaultTheme) => theme.COLORS.GRAY1};
+  font-family: ${({ theme }: DefaultTheme) => theme.FONTS.POPPINSLIGHT};
+  padding: ${RFValue(8)}px;
 `;

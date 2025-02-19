@@ -15,6 +15,7 @@ export const ContentHeader = styled.View`
 `;
 
 export const ContentBody = styled.View`
+   
     margin-top: ${RFValue(-30)}px;
     background-color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.BACKGROUNDLIGHT};
     border-top-left-radius: ${RFValue(20)}px;
@@ -31,19 +32,26 @@ export const ContentFooter = styled.View`
 
 export const Title = styled.Text`
    text-align: center;
-    font-size: ${RFValue(25)}px;
+    font-size: ${RFValue(28)}px;
     font-family: ${({ theme }: { theme: DefaultTheme }) => theme.FONTS.POPPINSMEDIUM};
 `;
 
 export const Description = styled.Text`
     text-align: center;
+    margin-top: ${RFValue(30)}px;
     font-size: ${RFValue(15)}px;
     color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.TEXT};
-    margin-top: ${RFValue(50)}px;
+    font-family: ${({ theme }: { theme: DefaultTheme }) => theme.FONTS.POPPINSLIGHT};
+`;
+export const SubDescription = styled.Text`
+    text-align: center;
+    margin-bottom: ${RFValue(10)}px;
+    font-size: ${RFValue(15)}px;
+    color: ${({ theme }: { theme: DefaultTheme }) => theme.COLORS.TEXT};
     font-family: ${({ theme }: { theme: DefaultTheme }) => theme.FONTS.POPPINSLIGHT};
 `;
 
 export const ViewButton = styled.View`
+    margin-left: ${RFValue(40)}px;
     flex-direction: row;
-    margin-top: ${RFValue(10)}px;
 `;
