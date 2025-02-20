@@ -3,6 +3,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
+import "../global.css"; 
 
 interface ScreenOptions {
   name: string;
@@ -13,7 +14,7 @@ interface ScreenOptions {
 }
 
 const screensOptionsList: ScreenOptions[] = [
-  { name: "(tabs)/login", options: { title: "Login", headerShown: true } },
+  { name: "(tabs)/login", options: { title: "Login", headerShown: false } },
   // { name: "(tabs)/home", options: { title: "Home", headerShown: true } },
 ];
 
