@@ -5,6 +5,8 @@ import { FormHandles } from "@unform/core";
 import { useRouter } from 'expo-router';
 import * as Yup from "yup";
 import Input from '@/components/Input/Input';
+import ButtonSocialFacebook from '@/components/ButtonSocialFacebook/ButtonSocialFacebook';
+import ButtonSocialGoogle from '@/components/ButtonSocialGoogle/ButtonSocialGoogle';
 
 const LoginScreen = () => {
 
@@ -72,29 +74,33 @@ const LoginScreen = () => {
                     />
                     {/* Botão de Login */}
                     <TouchableOpacity
-                        className={`mt-6 p-3 rounded-xl flex items-center justify-center bg-blue-500`}
+                        className={`mt-6 p-3 rounded-lg flex items-center justify-center bg-blue-500`}
                         onPress={() => formRef.current?.submitForm()}
                     >
                         <Text className="text-white text-lg font-bold">Entrar</Text>
                     </TouchableOpacity>
-
-                    {/* Links "Esqueci minha senha" e "Criar conta" */}
-                    {/* TODO: Implementar rotas: alterar {router.push("/login")} */}
-                    <View className="flex-row justify-between mt-4">
-                        <TouchableOpacity onPress={() => router.push("/login")}>
-                            <Text className="text-blue-500 text-sm">Esqueci minha senha</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => router.push("/login")}>
-                            <Text className="text-blue-500 text-sm">Criar conta</Text>
-                        </TouchableOpacity>
-                    </View>
-
                 </Form>
+
+                {/* Links "Esqueci minha senha" e "Criar conta" */}
+                {/* TODO: Implementar rotas: alterar {router.push("/login")} */}
+                <View className="flex-row justify-between mt-4">
+                    <TouchableOpacity onPress={() => router.push("/login")}>
+                        <Text className="text-blue-500 text-sm">Esqueci minha senha</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => router.push("/login")}>
+                        <Text className="text-blue-500 text-sm">Criar conta</Text>
+                    </TouchableOpacity>
+                </View>
+
+                {/* Social Login */}
+                <Text className="text-center text-gray-500 mt-6 text-sm">Ou entre com</Text>
+                <View className="flex-row justify-center mt-4 space-x-4 gap-4">
+                    <ButtonSocialGoogle />
+                    <ButtonSocialFacebook />
+                </View>
             </View>
         </SafeAreaView>
     )
 }
 
-export default LoginScreen
-
-const styles = StyleSheet.create({})
+export default LoginScreen;
