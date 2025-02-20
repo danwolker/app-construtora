@@ -15,7 +15,7 @@ interface ScreenOptions {
 
 const screensOptionsList: ScreenOptions[] = [
   { name: "(tabs)/login", options: { title: "Login", headerShown: false } },
-  // { name: "(tabs)/home", options: { title: "Home", headerShown: true } },
+  { name: "(tabs)/home", options: { title: "Home", headerShown: true } },
 ];
 
 // GestureHandlerRootView => Necessário para capturar corretamente gestos (Swipe, Pan, etc.) dentro do aplicativo

@@ -23,6 +23,7 @@ const LoginScreen = () => {
         // TODO: Validar os dados do formulário
         console.log(data);
         console.log(typeof data);
+        router.push("/home");
 
         // DESCOMENTAR PARA USAR VALIDAÇÃO
         // try {
